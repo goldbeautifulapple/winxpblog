@@ -1,0 +1,397 @@
+/* ===== 桌面图标 ===== */
+.desktop {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 88px;
+}
+
+.icon {
+    text-align: center;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.icon:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.icon-img {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 2px solid #000080;
+    border-radius: 2px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+.icon-img.folder {
+    background-size: 300%;
+    background-image: url("images/folder.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+.icon-img.file {
+    background-image: url("images/file.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.icon-img.gmod {
+    background-image: url("images/gmod.ico");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.icon-name {
+    margin-top: 4px;
+    color: #ffffff;
+    font-size: 12px;
+    text-shadow: 1px 1px 0 #000000;
+}
+
+/* ===== 桌面本体（壁纸）===== */
+body {
+    box-sizing: border-box;
+    min-height: 100vh;
+
+    /* 原来这里挂的是 Windows XP 的 Bliss 壁纸，换成纯 CSS 渐变：
+       零版权风险，顺带省掉 658KB 的图片加载。观察顺序是 天空 → 地平线 → 草地。 */
+    background: linear-gradient(to bottom,
+        #3f7ec9 0%,
+        #8dc3ea 38%,
+        #dceccf 50%,
+        #7cb342 58%,
+        #38651f 100%);
+
+    user-select: none;
+
+    background-color: #008080;
+    font-family: "Tahoma", "SimSun", sans-serif;
+    color: #000000;
+    margin: 0;
+    padding: 24px;
+}
+
+/* ===== 窗口 ===== */
+.window {
+    position: absolute;
+    left: 160px;
+    top: 90px;
+    width: 480px;
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+
+    box-sizing: border-box;
+}
+
+.titlebar {
+    background: linear-gradient(to bottom, #0058ee, #3f8cf3);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 3px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+}
+
+.btns {
+    display: flex;
+    gap: 2px;
+}
+
+.btn {
+    width: 16px;
+    height: 14px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 14px;
+    color: #000000;
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #dfdfdf;
+}
+
+.btn:active {
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.window-body {
+    padding: 16px 20px;
+    background: #ffffff;
+    font-family: "Microsoft YaHei", "SimSun", sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    user-select: text;
+
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto
+}
+.window-body h1 {
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+
+.window-body p {
+    margin: 0 0 1em;
+}
+
+.window-body li {
+    margin-bottom: 0.3em;
+}
+
+.note-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+}
+
+.note-item {
+    width: 84px;
+    padding: 6px 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    background: rgba(0, 0, 128, 0.12);
+}
+
+.note-item-name {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.3;
+    word-break: break-all;
+}
+
+.window-body.raw {
+    white-space: pre-wrap;
+}
+
+.window-body pre {
+    border: 1px solid #c8c8c8;
+    overflow: auto;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.window-body code {
+    font-family: Consolas, "Courier New", monospace;
+}
+
+.resizer {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    width: 12px;
+    height: 12px;
+    cursor: nwse-resize;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent 0 2px,
+        #808080 2px 3px
+    );
+}
+
+/* ===== 浏览器壳 ===== */
+.window-body.browser {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.browser-bar {
+    flex: 0 0 auto;
+    padding: 6px 8px;
+    background: #c0c0c0;
+    border-bottom: 1px solid #808080;
+}
+
+.browser-url {
+    padding: 3px 8px;
+    background: #ffffff;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.browser-main {
+    flex: 1 1 auto;
+    display: flex;
+    min-height: 0;
+}
+
+.browser-side {
+    flex: 0 0 120px;
+    padding: 1px 0;
+    background: #f2f2f2;
+    border-right: 1px solid #c8c8c8;
+    overflow: auto;
+    font-size: 13px;
+}
+
+.side-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.side-item:hover {
+    background: #dde4f0;
+}
+
+.side-item.active {
+    background: #028daf;
+    color: #ffffff;
+}
+
+.browser-page {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 16px 20px;
+    overflow: auto;
+}
+
+.window-body img,
+.browser-page img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 12px 0;
+}
+
+.taskbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+
+    display: flex;
+    align-items: stretch;
+
+    background: linear-gradient(to bottom,
+        #3168d5 0%,
+        #4a86e8 6%,
+        #2f6fe0 12%,
+        #245edb 55%,
+        #1c4fc4 90%,
+        #1743a8 100%);
+    border-top: 1px solid #0a2a8a;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35);
+
+    z-index: 1000;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+/* 左：开始按钮 */
+.start-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 20px 0 9px;
+    border-radius: 0 9px 9px 0;
+    background: linear-gradient(to bottom,
+        #7dc24f 0%,
+        #5cb03a 10%,
+        #3f8e1f 48%,
+        #2f7a12 90%,
+        #266a0c 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                2px 0 4px rgba(0, 0, 0, 0.35);
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+}
+
+.start-btn:hover {
+    filter: brightness(1.12);
+}
+
+.start-btn:active {
+    filter: brightness(0.88);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 开始按钮上的四色小旗，纯 CSS 画的 */
+.start-flag {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    width: 16px;
+    height: 16px;
+    transform: skewY(-8deg);
+}
+
+.start-flag i {
+    border-radius: 1px;
+}
+
+.start-flag i:nth-child(1) { background: #00f0ff; }
+.start-flag i:nth-child(2) { background: #ff2bd6; }
+.start-flag i:nth-child(3) { background: #7c4dff; }
+.start-flag i:nth-child(4) { background: #b6ff3f; }
+
+/* 中：任务按钮区（下一步才往里放按钮） */
+.task-list {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0 6px;
+    overflow: hidden;
+}
+
+/* 右：托盘 + 时钟 */
+.tray {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 95px;
+    background: linear-gradient(to bottom,
+        #14a0e8 0%,
+        #0e82c6 50%,
+        #0a6aa8 100%);
+    border-left: 1px solid #0a5a99;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+}
