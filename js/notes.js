@@ -54,7 +54,20 @@ function renderMarkdown(text, container, base) {
             fitWindow(container.closest('.window'));
         };
     });
-
+    //篝火动图
+    let img1 = document.createElement("img");
+    let src1 = "images/bonfire.gif"
+    container.appendChild(img1);
+    img1.onload = function () {
+            fitWindow(container.closest('.window'));
+    };
+    img1.className="note-gif";
+    img1.src=src1;
+    //篝火下加个文字
+    let FIRE = document.createElement("div");
+    FIRE.textContent="BONLIT FIRE";
+    FIRE.className="fire";
+    container.appendChild(FIRE);
     fitWindow(container.closest('.window'));
 }
 
