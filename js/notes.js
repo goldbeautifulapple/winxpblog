@@ -65,7 +65,7 @@ function renderMarkdown(text, container, base) {
     img1.src=src1;
     //篝火下加个文字
     let FIRE = document.createElement("div");
-    FIRE.textContent="BONLIT FIRE";
+    FIRE.textContent="BONFIRE LIT";
     FIRE.className="fire";
     container.appendChild(FIRE);
     fitWindow(container.closest('.window'));
