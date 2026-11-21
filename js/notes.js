@@ -16,6 +16,13 @@ let sections = {
             "无回显RCE": "N-RCE.md"
         }
     },
+    "漏洞复现记录":{
+        dir: "hole",
+        ui: "grid",
+        notes:{
+            "ThinkPHP5 5.0.22 远程代码执行漏洞":"thinkphp5-rce.md"
+        }
+    },
     "gar'smod": {
         dir: "gmod",
         ui: "browser",
@@ -54,7 +61,10 @@ function renderMarkdown(text, container, base) {
             fitWindow(container.closest('.window'));
         };
     });
-    //篝火动图
+    //篝火动图(写死的)
+    let line1 = document.createElement("div");
+    line1.className = "note-sep";
+    container.appendChild(line1);
     let img1 = document.createElement("img");
     let src1 = "images/bonfire.gif"
     container.appendChild(img1);
