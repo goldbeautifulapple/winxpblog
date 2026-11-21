@@ -137,6 +137,18 @@ function openFolder(section) {
             openNote(section, name);
         };
     });
+        /* 单击顶替（和桌面图标同一套做法） */
+    if (window.matchMedia('(hover: none)').matches) {
+        let lastTap = 0;
+        winEl.querySelectorAll('.note-item').forEach(function (item) {
+            item.onclick = function () {
+                let now = Date.now();
+                if (now - lastTap < 600) return;
+                lastTap = now;
+                item.ondblclick();
+            };
+        });
+    }
 }
 
 /* ===== 浏览器壳：地址栏 + 左侧专栏 + 右侧正文 ===== */
