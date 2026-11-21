@@ -417,3 +417,31 @@ body {
     width: 75%;
     margin: 24px auto 0;
 }
+/* ===== 手机适配：窄屏下窗口铺满 ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .desktop {
+        flex-direction: row;
+        width: auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .window {
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: calc(100vh - 30px) !important;    /* 老浏览器兜底 */
+        height: calc(100dvh - 30px) !important;   /* 支持 dvh 的用这个，地址栏伸缩时不出错 */
+        max-height: none !important;
+        border-radius: 0;
+    }
+
+    .resizer {
+        display: none;
+    }
+    body { touch-action: manipulation; }
+}
